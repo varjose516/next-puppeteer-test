@@ -1,9 +1,34 @@
+@font-face {
+  font-family: 'SpectrumSans';
+  src: url('/fonts/SpectrumSans_Bd.ttf');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SpectrumSans';
+  src: url('/fonts/SpectrumSans_Rg.ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SpectrumSans';
+  src: url('/fonts/SpectrumSans_Md.ttf');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+  font-family: SpectrumSans !important;
 }
 
 a {
