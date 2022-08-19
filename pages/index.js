@@ -1,40 +1,81 @@
-import React from "react";
+import React from 'react';
 
+const PUPPETEER_API = process.env.NEXT_PUBLIC_PUPPETEER_API;
+const sizes = ['mobile', 'desktop'];
 const Home = () => {
-  return (
-    <div
-      style={{
-        width: `631px`,
-        height: "270px",
-        marginTop: "24px",
-        backgroundColor: "white",
-        padding: "24px",
-      }}
-    >
-      {[0, 1].map((item, index) => {
-        return (
-          <React.Fragment key={`templateF-yLabel-${index}`}>
-            <div
-              style={{
-                fontSize: `19px`,
-                color: "white",
-                display: "flex",
-                alignItems: "center",
-                flexGrow: 1,
-                backgroundColor: "black",
-                height: "100%",
-                maxHeight: "42px",
-                paddingLeft: "12px",
-                paddingRight: "12px",
-              }}
-            >
-              Test {index}
-            </div>
-            <div>&nbsp;</div>
-          </React.Fragment>
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    if (!id || !isActive) {
+      return;
+    }
+    setLoading(true);
+    const previewPoll = async () => {
+      let result;
+      try {
+        result = await Promise.all(
+          sizes.map((size) =>
+            fetch(`${PUPPETEER_API}/render?id=${id}&size=${size}`)
+          )
         );
-      })}
-    </div>
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.log(err);
+        setLoading(false);
+      }
+
+      try {
+        await Promise.all(
+          result.map(async (res, index) => {
+            const blob = await res.blob();
+            const image = document.createElement('img');
+            const imageObjectURL = URL.createObjectURL(blob);
+            image.src = imageObjectURL;
+
+            const container = document.getElementById(
+              `shared-poll-preview-${sizes[index]}`
+            );
+            if (container) {
+              container.innerHTML = '';
+              container.append(image);
+            }
+          })
+        );
+        setLoading(false);
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.log(err);
+        setLoading(false);
+      }
+    };
+    previewPoll();
+  }, []);  
+
+  return (
+    <>
+      <div className="template-wrapper pt-10">
+        <div className="flex justify-between">
+          <h4 className="text-xl leading-7 font-bold text-gray-700 mb-5">
+            Poll {pollData?.name}
+          </h4>
+        </div>
+        <div className="flex justify-between">
+          <div
+            id="shared-poll-preview-desktop"
+            style={{height: '435px', width: '775px'}}
+          />
+          <div
+            id="shared-poll-preview-mobile"
+            style={{height: '435px', width: '435px'}}
+          />
+        </div>              
+      </div>
+      {loading && (
+        <div className="fixed inset-0 z-30">
+          Loading...
+        </div>
+      )}      
+    </>
   );
 };
 
