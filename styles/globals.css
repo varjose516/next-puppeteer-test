@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: 'SpectrumSans';
   src: url('/fonts/SpectrumSans_Bd.ttf');
   font-weight: bold;
@@ -17,6 +17,33 @@
 @font-face {
   font-family: 'SpectrumSans';
   src: url('/fonts/SpectrumSans_Md.ttf');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+} */
+
+@font-face {
+  font-family: 'SpectrumSans';
+  src: local('SpectrumSans'),
+    url(/fonts/SpectrumSans_Bd.ttf) format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SpectrumSans';
+  src: local('SpectrumSans'),
+    url(/fonts/SpectrumSans_Rg.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SpectrumSans';
+  src: local('SpectrumSans'),
+    url(/fonts/SpectrumSans_Md.ttf) format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
