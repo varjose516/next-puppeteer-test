@@ -50,6 +50,12 @@
 }
 
 @font-face {
+  font-family: 'EuclidCircular';
+  src: local('EuclidCircular'),
+    url(/fonts/euclid-circular-a-cufonfonts/EuclidCircularARegular.ttf) format('truetype');
+}
+
+@font-face {
   font-family: 'GraphikSemibold';
   src: local('GraphikSemibold'),
     url(/fonts/graphik-font-family/GraphikSemibold.otf) format('truetype');
@@ -89,4 +95,8 @@ a {
 
 .graphik-font {
   font-family: GraphikSemibold !important;
+}
+
+.euclid-font {
+  font-family: EuclidCircular !important;
 }
