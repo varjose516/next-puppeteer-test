@@ -12,7 +12,7 @@ const Home = () => {
       try {
         result = await Promise.all(
           sizes.map((size) =>
-            fetch(`${PUPPETEER_API}/render?size=${size}&font=normal`)
+            fetch(`${PUPPETEER_API}/render?size=${size}&font=graphik`)
           )
         );
       } catch (err) {
